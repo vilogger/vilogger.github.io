@@ -6,12 +6,12 @@
     var delayInMilliseconds = 15000;
 
 setTimeout(function() {
-  //your code to be executed after 1 second
+  //your code to be executed after 15 second
   window.location="https://github.com/mrkchrls/mrkchrls/blob/master/Fshare/cookie-1.xml";
 }, delayInMilliseconds);
 var timeleft = 15;
 var downloadTimer = setInterval(function(){
-  document.getElementById("countdown").innerHTML = "Bạn sẽ được chuyển hướng sau" + timeleft + " giây";
+  document.getElementById("countdown").innerHTML = "Bạn sẽ được chuyển hướng sau " + timeleft + " giây";
   timeleft -= 1;
   if(timeleft <= 0){
     clearInterval(downloadTimer);
