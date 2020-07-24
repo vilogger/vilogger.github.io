@@ -50,6 +50,6 @@ function doi(){
       document.querySelector("date").textContent = Math.floor( Math.floor(((new Date() - yourDate) / 1000) / 60 / 60 / 24))+" NGÀY";
 }
 </script>
-<script src="app.js"></script>
+<script src="app.js?v=<?php echo time() ?>"></script>
 </body>
 </html>
