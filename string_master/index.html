@@ -1,0 +1,339 @@
+<a class ="sonorous" href="https://github.com/EkoLabs/sonorous" target="_blank">Sonorous</a>
+<div class="wrapper">
+  <div class="board">         
+    <div class="strings">
+      <div class="string"></div>
+      <div class="string"></div>
+      <div class="string"></div>
+      <div class="string"></div>
+      <div class="string"></div>
+      <div class="string"></div>
+    </div>    
+  </div>
+</div>
+
+<a href="https://github.com/EkoLabs/sonorous" class="github-corner" aria-label="Sonorous on GitHub" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; z-index: 100; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+  background: black;
+}
+body:before {
+  content: "";
+  position: absolute;
+  background: radial-gradient(circle, #000000 1px, rgba(0, 0, 0, 0) 1px), url(https://eko.com/s/sonorous/demos/string_master/tillian_live_small.gif);
+  width: 100%;
+  height: 100%;
+  background-size: 3px 3px, cover;
+  background-repeat: repeat, no-repeat;
+  background-position: center calc(50% - 100px);
+}
+body:after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 70%, black 100%, black 100%);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+a.sonorous {
+  z-index: 100;
+  display: block;
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  width: 180px;
+  height: 100px;
+  background-image: url(https://eko.engineering/static/media/sonorous_logo.83f6c44b.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 110px;
+  font-family: arial;
+  text-transform: uppercase;
+}
+
+.wrapper {
+  perspective: 400px;
+  position: fixed;
+  width: 100%;
+  bottom: -100px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.board {
+  position: relative;
+  height: 600px;
+  width: 200px;
+  margin: 0 auto;
+  transform: rotateX(70deg);
+  background: #333;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 2%, rgba(0, 0, 0, 0.3) 15%, black 100%);
+  overflow: hidden;
+}
+.board:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: #aaaaaa;
+  opacity: 0.6;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.6);
+  animation: 5.5s bar linear infinite;
+  transform: translateY(0);
+}
+
+.strings {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
+}
+
+.string {
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  transform: translateX(-50%);
+  background: white;
+  top: 0;
+  opacity: 0.5;
+  z-index: 6;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+.string:first-child, .string:last-child {
+  width: 3px;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.6);
+}
+.string:nth-child(1) {
+  left: 0%;
+}
+.string:nth-child(2) {
+  left: 20%;
+}
+.string:nth-child(3) {
+  left: 40%;
+}
+.string:nth-child(4) {
+  left: 60%;
+}
+.string:nth-child(5) {
+  left: 80%;
+}
+.string:nth-child(6) {
+  left: 100%;
+}
+
+.note {
+  z-index: 1;
+  top: -100px;
+  position: absolute;
+  width: 20%;
+  display: inline-block;
+  padding-bottom: 20%;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+  pointer-events: all;
+}
+.note:before {
+  content: "";
+  z-index: 2;
+  position: absolute;
+  width: 50%;
+  padding-bottom: 50%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 50%;
+  border: 3px solid #333;
+  box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+.note:after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 1;
+  background: radial-gradient(ellipse at top, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.6) 95%, black 100%);
+}
+
+.type0 {
+  left: 0;
+  background: green;
+}
+
+.type1 {
+  left: 20%;
+  background: red;
+}
+
+.type2 {
+  left: 40%;
+  background: yellow;
+}
+
+.type3 {
+  left: 60%;
+  background: blue;
+}
+
+.type4 {
+  left: 80%;
+  background: orange;
+}
+
+.note {
+  transform: scale(1);
+  animation: 5.5s slide linear;
+  top: -110px;
+}
+
+.note:before {
+  animation: 5.5s cap linear;
+}
+
+.note.selected {
+  transform-origin: center;
+  transform: scaleX(1.7) scaleY(1.5) translateY(-30px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.strings.wrong {
+  animation: 0.2s wrong linear;
+}
+
+@keyframes slide {
+  to {
+    top: 110%;
+  }
+}
+@keyframes cap {
+  to {
+    top: 14%;
+  }
+}
+@keyframes bar {
+  to {
+    top: 110%;
+  }
+}
+@keyframes wrong {
+  50% {
+    background: rgba(255, 0, 0, 0.6);
+  }
+}
+
+</style>
+<script type="text/javascript">
+// inspired by ANDRE LUIS SIQUEIRA ARAUJO's work: // https://codepen.io/aluis92/pen/YeMWjr
+
+let soundURLS =  [
+  {
+    id: "string1",
+    url: "https://eko.com/s/sonorous/demos/string_master/string1.mp3"
+  },
+  {
+    id: "string2",
+    url: "https://eko.com/s/sonorous/demos/string_master/string2.mp3"
+  },
+  {
+    id: "string3",
+    url: "https://eko.com/s/sonorous/demos/string_master/string3.mp3"
+  },
+  {
+    id: "string4",
+    url: "https://eko.com/s/sonorous/demos/string_master/string4.mp3"
+  },
+  {
+    id: "string5",
+    url: "https://eko.com/s/sonorous/demos/string_master/string5.mp3"
+  },
+  {
+    id: "wrong1",
+    url: "https://eko.com/s/sonorous/demos/string_master/wrong1.mp3"
+  },
+  {
+    id: "wrong2",
+    url: "https://eko.com/s/sonorous/demos/string_master/wrong2.mp3"
+  },
+  {
+    id: "wrong3",
+    url: "https://eko.com/s/sonorous/demos/string_master/wrong3.mp3"
+  },
+]
+
+if (window.Sonorous && window.Sonorous.isSupported()) {
+  // iterate through sound URLS and create a Sonor for each
+  // use a pool so that several instances of the same sound can play simultaneously 
+  soundURLS.forEach(sound => {
+      Sonorous.addSonor(sound.url, {
+        id: sound.id,
+        poolSize: 4
+    });
+  })    
+}
+
+const MAX_NOTE_INTERVAL = 900;
+const stringsEl = document.querySelector(".strings");
+const boardEl = document.querySelector('.board');
+
+function addNote(){  
+  let note = document.createElement("div");  
+  let stringNumber = Math.floor(Math.random()*5);
+  note.classList.add(`type${stringNumber}`, 'note');
+  boardEl.appendChild(note);
+  
+  let nextNoteTime = 400 + Math.random() * MAX_NOTE_INTERVAL;    
+ 
+  note.addEventListener('mousedown', ()=>{
+    note.classList.add('selected');
+    let sonorId = `string${stringNumber+1}`;
+    Sonorous.get(sonorId).play();    
+  })
+  
+  
+  // remove note on animation end
+  note.addEventListener('animationend', e => {    
+    if (e.pseudoElement === ""){
+         note.parentNode.removeChild(note);
+    }
+  });
+  
+  // create the next note
+  setTimeout(()=>{
+    addNote()
+  }, nextNoteTime); 
+}
+
+stringsEl.addEventListener("mousedown", ()=>{  
+  let sonorId = `wrong${Math.floor(Math.random()*3)+1}`;
+  Sonorous.get(sonorId).play();
+  stringsEl.classList.add('wrong');
+  setTimeout(()=>stringsEl.classList.remove('wrong'),200)
+});
+
+addNote();
+</script>
